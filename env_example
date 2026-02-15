@@ -1,0 +1,5 @@
+APP_NAME="MyApp"
+DEBUG=true
+PORT=8000
+SECRET_KEY="supersecretvalue"
+DATABASE_URL="postgresql://..."

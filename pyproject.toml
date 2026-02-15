@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "config"
+version = "1.0.0"
+dependencies = []
+
+[tool.ruff]
+exclude = [
+    ".venv",
+    ".vscode",
+    ".git",
+    "data",
+    "examples",
+    "packages",
+    "docker",
+    "docs",
+    "buildspecs",
+    "notebooks"
+]
+indent-width = 4
+# PEP-8 limits all line length to a maximum of 79 characters.
+# https://peps.python.org/pep-0008/#maximum-line-length
+line-length = 79
+preview = true
+target-version = "py312"
+force-exclude = true
+
+[tool.ruff.format]
+docstring-code-format = true
+indent-style = "space"
+preview = true
+quote-style = "double"
+skip-magic-trailing-comma = true
+line-ending = "auto"
+
+[tool.ruff.lint]
+extend-select = [
+    # https://docs.astral.sh/ruff/rules/#flake8-commas-com
+    "COM",
+    # https://docs.astral.sh/ruff/rules/#warning-w
+    "W",
+    # https://docs.astral.sh/ruff/rules/#error-e
+    "E"
+]
+ignore = ["COM812"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["wind_rose"]
+split-on-trailing-comma = false 
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+
+warn_redundant_casts = true
+warn_unused_ignores = true
+disallow_any_generics = true
+check_untyped_defs = true
+no_implicit_reexport = true
+disallow_incomplete_defs = true
+disallow_untyped_defs = true
+warn_return_any = true
+# warn_unreachable = true
+# strict = true
+# strict_equality = true
+exclude = [
+    ".venv",
+    ".vscode",
+    ".git",
+    "data",
+    "packages",
+    "docker",
+    "docs",
+    "buildspecs",
+    "notebooks",
+]
+disable_error_code = ["import-not-found"]
