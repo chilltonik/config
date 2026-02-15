@@ -31,6 +31,9 @@ class Settings(BaseModel):
         ..., description="Secret key for cryptographic functions"
     )
     DATABASE_URL: str = Field(..., description="Database connection URL")
+    REDIS_URL: str = Field(
+        "redis://localhost:6379/0", description="Redis connection URL"
+    )
 
     model_config = SettingsConfigDict(
         env_file=".env",
